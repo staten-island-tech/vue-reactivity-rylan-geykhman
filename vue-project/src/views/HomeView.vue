@@ -1,4 +1,5 @@
 <script setup>
+import PersonCard from "@/components/PersonCard.vue";
 const peopleForHire = [
   {
     name: "Yan",
@@ -29,7 +30,11 @@ const peopleForHire = [
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <PersonCard
+      v-for="person in peopleForHire"
+      :key="person.name"
+      :Person="person"
+    />
+  </div>
 </template>
