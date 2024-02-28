@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>{{ person.name }}</h2>
+        <h2>{{  }}</h2>
         <h3>{{ person.codingProwess }}</h3>
         <h3>{{ person.price }}</h3>
         <button @click="increment">Add</button>
