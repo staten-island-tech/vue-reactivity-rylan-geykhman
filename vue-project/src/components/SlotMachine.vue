@@ -9,15 +9,29 @@ function getRandomSymbol(){
   return symbols[Math.floor(Math.random() * symbols.length)];
 };
 
+function determineOutcome(symbol1, symbol2, symbol3){
+  if(symbol1 === symbol2 && symbol2 === symbol3){
+    let outcome = "win";
+    console.log(outcome);
+  } else if(symbol1 === symbol2 || symbol2 === symbol3 || symbol1 === symbol3){
+    let outcome = "partial-win";
+    console.log(outcome);
+  } else {
+    let outcome = "lose";
+    console.log(outcome);
+  }
+}
+
 function spinReels(){
   for (let i = 0; i < reels.length; i++) {
     setTimeout(() => {
       reels[i] = getRandomSymbol();
-    }, i * 200);
+    }, i * 500);
   }
+  determineOutcome()
   setTimeout(() => {
     spinning.value = false;
-  }, reels.length * 200);
+  }, reels.length * 500);
 };
 
 function spin(){
