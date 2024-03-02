@@ -5,17 +5,21 @@
 <template>
   <div>
     <h1>Slots Simulation</h1>
-    <SlotMachine />
-    <Money />
+    <SlotMachine :outcome="outcome"/>
+    <Money :balance="balance" />
   </div>
 </template>
 
 <script>
 import SlotMachine from '@/components/SlotMachine.vue';
-import Money from '@/components/Money.vue'
-let balance = ref(100); 
+import Money from '@/components/Money.vue';
   export default {
-    components: { SlotMachine, Money }
+    components: { SlotMachine, Money },
+    data() {
+      return {
+        outcome: ''
+      }
+    }
   }
 </script>
 

@@ -9,7 +9,8 @@ function getRandomSymbol(){
   return symbols[Math.floor(Math.random() * symbols.length)];
 };
 
-function determineOutcome(symbol1, symbol2, symbol3){
+function determineOutcome(){
+  const [symbol1, symbol2, symbol3] = reels;
   if(symbol1 === symbol2 && symbol2 === symbol3){
     let outcome = "win";
     console.log(outcome);
@@ -28,8 +29,8 @@ function spinReels(){
       reels[i] = getRandomSymbol();
     }, i * 500);
   }
-  determineOutcome()
   setTimeout(() => {
+    determineOutcome();
     spinning.value = false;
   }, reels.length * 500);
 };
@@ -38,6 +39,7 @@ function spin(){
   if (!spinning.value) {
     spinning.value = true;
     spinReels();
+    handleSpinOutcome();
   }
 }
 </script>
@@ -52,12 +54,12 @@ function spin(){
 
 <style scoped>
 .reel {
-    display: inline-block;
-    width: 100px;
-    height: 150px;
-    border: 1px solid #ccc;
-    margin: 0 10px;
-    text-align: center;
-    font-size: 24px;
+  display: inline-block;
+  width: 100px;
+  height: 150px;
+  border: 1px solid #ccc;
+  margin: 0 10px;
+  text-align: center;
+  font-size: 24px;
   }
 </style>
