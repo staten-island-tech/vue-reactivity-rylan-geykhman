@@ -1,33 +1,23 @@
 <script setup>
-import { ref } from 'vue';
-import { outcome } from '@/views/HomeView.vue'
-
-let balance = ref(100)
-function handleSpinComplete(){
-  if (outcome === 'win') {
-    balance.value += 50;
-    console.log(balance)
-  } else if (outcome === 'partial-win') {
-    balance.value += 15;
-    console.log(balance)
-  } else {
-    balance.value -= 10;
-    console.log(balance)
-  }
-}
+import {balance} from '@/somethings'
+console.log(balance.balance)
 </script>
 
-<!-- @click=$emit('balanceChange',state) -->
 <template>
-  <div>{{ balance }}</div>
+  <div class="money">Balance: {{ balance.balance }}</div>
+  <div class="money"v-if="balance.balance < 10" >Not enough money! Refresh to restart. (clicking spin button will just disable it :D)</div>
+  <div v-else></div>
 </template>
 
 <style scoped>
-#app {
+.money {
+  padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  font-size:20px;
+  color: #979191;
 }
 </style>
 
